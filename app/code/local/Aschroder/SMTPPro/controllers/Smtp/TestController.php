@@ -256,5 +256,12 @@ class Aschroder_SMTPPro_Smtp_TestController extends Mage_Adminhtml_Controller_Ac
         return $expected != $actual &&
             !is_subclass_of($actual, $expected);
     }
+
+    protected function _isAllowed() {
+
+        return Mage::getSingleton('admin/session')->isAllowed('system/config/smtppro');
+
+    }
+
 }
 

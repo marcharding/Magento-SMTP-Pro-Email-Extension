@@ -21,23 +21,30 @@ class Aschroder_SMTPPro_Smtp_LogController
             ->_addBreadcrumb(Mage::helper('adminhtml')->__('Tools'), Mage::helper('adminhtml')->__('Tools'))
             ->_addBreadcrumb(Mage::helper('adminhtml')->__('Email Log'), Mage::helper('adminhtml')->__('Email Log'));
         return $this;
-    }	
-		
+    }
+
 	public function indexAction() {
-		
+
 		  $this->_initAction()
             ->_addContent($this->getLayout()->createBlock('smtppro/log'))
             ->renderLayout();
-		
-	}	
-	
+
+	}
+
 	public function viewAction() {
-		
+
 		  $this->_initAction()
             ->_addContent($this->getLayout()->createBlock('smtppro/log_view'))
             ->renderLayout();
-            
-		
-	}	
-	
-} 
+
+
+	}
+
+
+    protected function _isAllowed() {
+
+        return Mage::getSingleton('admin/session')->isAllowed('system/tools/smtppro');
+
+    }
+
+}
